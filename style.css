@@ -1,0 +1,1050 @@
+/* =========================================
+   SHUBHAM PANDEY XO
+   PREMIUM NEON TIC TAC TOE
+========================================= */
+
+
+/* ---------- RESET ---------- */
+
+*{
+
+    margin:0;
+
+    padding:0;
+
+    box-sizing:border-box;
+
+}
+
+
+/* ---------- BODY ---------- */
+
+body{
+
+    min-height:100vh;
+
+    overflow-x:hidden;
+
+    font-family:
+
+        Arial,
+
+        sans-serif;
+
+    color:white;
+
+    background:
+
+        radial-gradient(
+
+            circle at 20% 10%,
+
+            #3b145c,
+
+            transparent 35%
+
+        ),
+
+        radial-gradient(
+
+            circle at 80% 90%,
+
+            #39134c,
+
+            transparent 35%
+
+        ),
+
+        linear-gradient(
+
+            135deg,
+
+            #08000f,
+
+            #180820,
+
+            #050008
+
+        );
+
+}
+
+
+/* ---------- SCREEN ---------- */
+
+.screen{
+
+    min-height:100vh;
+
+    display:none;
+
+    justify-content:center;
+
+    align-items:center;
+
+    padding:20px;
+
+}
+
+
+.screen.active{
+
+    display:flex;
+
+}
+
+
+/* ---------- CARD ---------- */
+
+.card{
+
+    width:
+
+        min(
+
+            100%,
+
+            430px
+
+        );
+
+    padding:40px 25px;
+
+    text-align:center;
+
+    border:1px solid
+
+        rgba(
+
+            255,
+
+            255,
+
+            255,
+
+            .15
+
+        );
+
+    border-radius:28px;
+
+    background:
+
+        rgba(
+
+            255,
+
+            255,
+
+            255,
+
+            .08
+
+        );
+
+    backdrop-filter:
+
+        blur(20px);
+
+    box-shadow:
+
+        0 0 50px
+
+        rgba(
+
+            170,
+
+            60,
+
+            255,
+
+            .18
+
+        );
+
+}
+
+
+/* ---------- LOGO ---------- */
+
+.game-logo{
+
+    width:90px;
+
+    height:90px;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    margin:
+
+        0
+
+        auto
+
+        20px;
+
+    border:2px solid
+
+        #ff4fd8;
+
+    border-radius:50%;
+
+    font-size:45px;
+
+    box-shadow:
+
+        0 0 30px
+
+        #ff4fd8;
+
+    animation:
+
+        logoPulse
+
+        2s
+
+        infinite
+
+        alternate;
+
+}
+
+
+@keyframes logoPulse{
+
+    from{
+
+        transform:
+
+            scale(1);
+
+    }
+
+
+    to{
+
+        transform:
+
+            scale(1.06);
+
+        box-shadow:
+
+            0 0 45px
+
+            #ff4fd8;
+
+    }
+
+}
+
+
+/* ---------- HEADINGS ---------- */
+
+h1{
+
+    margin-bottom:15px;
+
+    font-size:
+
+        clamp(
+
+            28px,
+
+            8vw,
+
+            48px
+
+        );
+
+    letter-spacing:2px;
+
+    background:
+
+        linear-gradient(
+
+            90deg,
+
+            #ff5de1,
+
+            #a875ff,
+
+            #00e5ff
+
+        );
+
+    -webkit-background-clip:text;
+
+    background-clip:text;
+
+    color:transparent;
+
+}
+
+
+p{
+
+    margin-bottom:22px;
+
+    color:#c5b9d2;
+
+    line-height:1.6;
+
+}
+
+
+/* ---------- INPUT ---------- */
+
+input{
+
+    width:100%;
+
+    padding:17px;
+
+    margin-bottom:16px;
+
+    border:1px solid
+
+        rgba(
+
+            255,
+
+            255,
+
+            255,
+
+            .2
+
+        );
+
+    border-radius:15px;
+
+    outline:none;
+
+    color:white;
+
+    background:
+
+        rgba(
+
+            0,
+
+            0,
+
+            0,
+
+            .3
+
+        );
+
+    font-size:17px;
+
+    text-align:center;
+
+}
+
+
+input::placeholder{
+
+    color:#8c8197;
+
+}
+
+
+input:focus{
+
+    border-color:
+
+        #00e5ff;
+
+    box-shadow:
+
+        0 0 20px
+
+        rgba(
+
+            0,
+
+            229,
+
+            255,
+
+            .3
+
+        );
+
+}
+
+
+/* ---------- BUTTON ---------- */
+
+#nameBtn{
+
+    width:100%;
+
+    padding:17px;
+
+    border:none;
+
+    border-radius:16px;
+
+    color:white;
+
+    background:
+
+        linear-gradient(
+
+            100deg,
+
+            #8d4dff,
+
+            #ff36c8
+
+        );
+
+    font-size:17px;
+
+    font-weight:bold;
+
+    cursor:pointer;
+
+    transition:.25s;
+
+    box-shadow:
+
+        0 10px 30px
+
+        rgba(
+
+            255,
+
+            54,
+
+            200,
+
+            .3
+
+        );
+
+}
+
+
+#nameBtn:hover{
+
+    transform:
+
+        translateY(-3px);
+
+    box-shadow:
+
+        0 15px 40px
+
+        rgba(
+
+            255,
+
+            54,
+
+            200,
+
+            .5
+
+        );
+
+}
+
+
+#nameBtn:active{
+
+    transform:
+
+        scale(.96);
+
+}
+
+
+/* ---------- MODE BUTTONS ---------- */
+
+.modeBtn{
+
+    width:100%;
+
+    padding:18px;
+
+    margin-top:12px;
+
+    border:1px solid
+
+        rgba(
+
+            255,
+
+            255,
+
+            255,
+
+            .15
+
+        );
+
+    border-radius:16px;
+
+    color:white;
+
+    background:
+
+        rgba(
+
+            255,
+
+            255,
+
+            255,
+
+            .07
+
+        );
+
+    font-size:17px;
+
+    font-weight:bold;
+
+    cursor:pointer;
+
+    transition:.25s;
+
+}
+
+
+.modeBtn:hover{
+
+    transform:
+
+        translateY(-4px);
+
+    border-color:
+
+        #ff4fd8;
+
+    background:
+
+        rgba(
+
+            255,
+
+            79,
+
+            216,
+
+            .15
+
+        );
+
+    box-shadow:
+
+        0 0 25px
+
+        rgba(
+
+            255,
+
+            79,
+
+            216,
+
+            .3
+
+        );
+
+}
+
+
+/* ---------- MESSAGE ---------- */
+
+.message{
+
+    min-height:20px;
+
+    color:#ff668d;
+
+    font-size:14px;
+
+}
+
+
+/* =========================================
+   GAME SCREEN
+========================================= */
+
+.game-container{
+
+    width:
+
+        min(
+
+            100%,
+
+            500px
+
+        );
+
+    text-align:center;
+
+}
+
+
+.game-container header{
+
+    margin-bottom:20px;
+
+}
+
+
+.game-container header
+
+.game-logo{
+
+    width:65px;
+
+    height:65px;
+
+    margin-bottom:10px;
+
+    font-size:30px;
+
+}
+
+
+.game-container h1{
+
+    margin-bottom:8px;
+
+}
+
+
+#gameStatus{
+
+    margin:0;
+
+    color:#00e5ff;
+
+    font-weight:bold;
+
+}
+
+
+/* ---------- SCOREBOARD ---------- */
+
+.scoreboard{
+
+    display:grid;
+
+    grid-template-columns:
+
+        1fr
+
+        1fr;
+
+    gap:12px;
+
+    margin-bottom:20px;
+
+}
+
+
+.score-box{
+
+    padding:15px;
+
+    border:1px solid
+
+        rgba(
+
+            255,
+
+            255,
+
+            255,
+
+            .15
+
+        );
+
+    border-radius:16px;
+
+    background:
+
+        rgba(
+
+            255,
+
+            255,
+
+            255,
+
+            .07
+
+        );
+
+}
+
+
+.score-box span{
+
+    display:block;
+
+    margin-bottom:6px;
+
+    color:#c5b9d2;
+
+    font-size:14px;
+
+}
+
+
+.score-box strong{
+
+    font-size:30px;
+
+    color:#ff4fd8;
+
+}
+
+
+/* ---------- BOARD ---------- */
+
+.game-board{
+
+    width:
+
+        min(
+
+            90vw,
+
+            420px
+
+        );
+
+    aspect-ratio:1;
+
+    display:grid;
+
+    grid-template-columns:
+
+        repeat(
+
+            3,
+
+            1fr
+
+        );
+
+    gap:9px;
+
+    margin:
+
+        0
+
+        auto
+
+        25px;
+
+}
+
+
+.cell{
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    border:1px solid
+
+        rgba(
+
+            255,
+
+            255,
+
+            255,
+
+            .18
+
+        );
+
+    border-radius:18px;
+
+    color:white;
+
+    background:
+
+        rgba(
+
+            255,
+
+            255,
+
+            255,
+
+            .07
+
+        );
+
+    font-size:
+
+        clamp(
+
+            45px,
+
+            15vw,
+
+            75px
+
+        );
+
+    font-weight:bold;
+
+    cursor:pointer;
+
+    transition:.25s;
+
+}
+
+
+.cell:hover{
+
+    border-color:
+
+        #00e5ff;
+
+    background:
+
+        rgba(
+
+            0,
+
+            229,
+
+            255,
+
+            .1
+
+        );
+
+}
+
+
+.cell.x{
+
+    color:#ff4fd8;
+
+    text-shadow:
+
+        0 0 20px
+
+        #ff4fd8;
+
+}
+
+
+.cell.o{
+
+    color:#00e5ff;
+
+    text-shadow:
+
+        0 0 20px
+
+        #00e5ff;
+
+}
+
+
+/* ---------- WINNER ---------- */
+
+.cell.winner{
+
+    animation:
+
+        winnerGlow
+
+        .6s
+
+        infinite
+
+        alternate;
+
+}
+
+
+@keyframes winnerGlow{
+
+    from{
+
+        transform:
+
+            scale(1);
+
+    }
+
+
+    to{
+
+        transform:
+
+            scale(1.08);
+
+        box-shadow:
+
+            0 0 35px
+
+            #ff4fd8;
+
+    }
+
+}
+
+
+/* ---------- RESULT ---------- */
+
+.result-box{
+
+    display:none;
+
+    padding:25px;
+
+    border:1px solid
+
+        #ff4fd8;
+
+    border-radius:20px;
+
+    background:
+
+        rgba(
+
+            255,
+
+            79,
+
+            216,
+
+            .1
+
+        );
+
+    box-shadow:
+
+        0 0 35px
+
+        rgba(
+
+            255,
+
+            79,
+
+            216,
+
+            .25
+
+        );
+
+}
+
+
+.result-box.show{
+
+    display:block;
+
+}
+
+
+.result-box h2{
+
+    margin-bottom:12px;
+
+    font-size:25px;
+
+}
+
+
+.result-box p{
+
+    margin-bottom:20px;
+
+}
+
+
+/* ---------- NEW GAME ---------- */
+
+#newGameBtn{
+
+    width:100%;
+
+    padding:16px;
+
+    border:none;
+
+    border-radius:15px;
+
+    color:white;
+
+    background:
+
+        linear-gradient(
+
+            100deg,
+
+            #8d4dff,
+
+            #ff36c8
+
+        );
+
+    font-size:16px;
+
+    font-weight:bold;
+
+    cursor:pointer;
+
+}
+
+
+/* ---------- MOBILE ---------- */
+
+@media(
+
+    max-width:500px
+
+){
+
+    .card{
+
+        padding:
+
+            32px
+
+            18px;
+
+    }
+
+
+    .game-board{
+
+        gap:7px;
+
+    }
+
+
+    .cell{
+
+        border-radius:14px;
+
+    }
+
+          }
